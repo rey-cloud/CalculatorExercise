@@ -1,74 +1,59 @@
-var input = document.getElementById("inputNum");
-var result = document.getElementById("result");
-
-var results = 0; // initialize to 0
-var fnum;
-
+var input = document.getElementById("inputNum")
+var displayRes = document.getElementById("result")
+var isFirst = true;
+var result = 0;
 var operator;
 
-function sum() {
-  if (input.value == "") {
-    fnum = 0;
-  } else {
-    fnum = parseFloat(input.value);
-    results += fnum;
+
+function sum(){
+  if (isFirst) {
+    result += parseFloat(input.value);
+    isFirst = false;
   }
-  operator = "+";
+  operator = '+';
 }
-function difference() {
-  if (input.value == "") {
-    fnum = 0;
-  } else {
-    fnum = parseFloat(input.value);
-    results += fnum;
+function difference(){
+  if (isFirst) {
+    result += parseFloat(input.value);
+    isFirst = false;
   }
-  operator = "-";
+  operator = '-';
 }
-function product() {
-  if (input.value == "") {
-    fnum = 0;
-  } else {
-    fnum = parseFloat(input.value);
-    results += fnum;
+function product(){
+  if (isFirst) {
+    result += parseFloat(input.value);
+    isFirst = false;
   }
-  operator = "*";
+  operator = '*';
 }
-function quotient() {
-  if (input.value == "") {
-    fnum = 0;
-  } else {
-    fnum = parseFloat(input.value);
-    results += fnum;
+function quotient(){
+  if (isFirst) {
+    result += parseFloat(input.value);
+    isFirst = false;
   }
-  operator = "/";
+  operator = '/';
 }
-function clear() {
-  result.innerHTML = "0";
-  results = 0;
+function clearRes() {
+  result = 0;
+  displayRes.innerHTML = "";
+  isFirst = true;
+  input.value = '';
 }
 
 function equals() {
-  var inputVal = parseFloat(input.value);
+  var valu = parseFloat(input.value);
 
-  if (operator == "+") {
-    results += inputVal;
-
-    result.innerHTML = results;
-    input.value = "";
-  } else if (operator == "-") {
-    results -= inputVal;
-
-    result.innerHTML = results;
-    input.value = "";
-  } else if (operator == "*") {
-    results *= inputVal;
-
-    result.innerHTML = results;
-    input.value = "";
-  } else if (operator == "/") {
-    results /= inputVal;
-
-    result.innerHTML = results;
-    input.value = "";
+  if (operator == '+') {
+    result += valu;
   }
+  else if (operator == '-') {
+    result -= valu;
+  }
+  else if (operator == '*') {
+    result *= valu;
+  }
+  else if (operator == '/') {
+    result /= valu;
+  }
+  displayRes.innerHTML = result;
 }
